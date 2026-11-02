@@ -25,7 +25,7 @@
     },
     {
       "id": "MAIN2",
-      "label": "主模块板外形 B",
+      "label": "空白外形占位（非功能板）",
       "unrotated_size_xy_mm": [
         47.87903,
         79.12100000000001
@@ -116,7 +116,7 @@
       "quantity": 2,
       "status": "outside_electronics_cavity",
       "layout_ids": [],
-      "note": "机架、执行器、动力或装配五金，位于电子舱之外。",
+      "note": "原清单为 2 个推杆。新版下舱一体尾耳接口按用户淘宝图的 8 mm 尾耳与 Ø4.2 mm 孔设计，局部包络采用 30 mm 行程、87.5/117.5 mm 孔距；不代表原采购链接规格、整机运动或电气载荷已核实。",
       "bom_url": "https://a.co/d/f1gvmVA"
     },
     {
@@ -199,7 +199,7 @@
       "quantity": 2,
       "status": "outside_electronics_cavity",
       "layout_ids": [],
-      "note": "机架、执行器、动力或装配五金，位于电子舱之外。",
+      "note": "本无碳板改型不使用碳纤维侧板；保留原清单和原图作为尺寸输入。",
       "bom_url": "https://a.co/d/0dzbtn5p"
     },
     {
@@ -324,7 +324,7 @@
         "MAIN2",
         "ACT1"
       ],
-      "note": "主模块 Gerber 中有两条独立外形，执行模块中有一条；需确认对应所用的三块板。已装元件可能占用凹口，不假定降压、ESP32 或 DRV 模块已包含在内。",
+      "note": "主模块 Gerber 中有两条独立外形，但较小的 MAIN2 没有铜线、丝印或焊盘，仅保留外形占位；执行模块有一条外形。不能据此确认原清单的三块功能板已全部识别；不假定降压、ESP32 或 DRV 模块已包含在板上。",
       "bom_url": "EasyEDA"
     },
     {
@@ -514,5 +514,78 @@
         ]
       }
     ]
+  },
+  "actuator": {
+    "integral_tail_clevis": true,
+    "separate_linear_actuator_holders_required": false,
+    "pivot_centres_mm": [
+      [
+        -109.0,
+        0,
+        10.5
+      ],
+      [
+        109.0,
+        0,
+        10.5
+      ]
+    ],
+    "pin_axis": "Y",
+    "pin_hole_diameter_mm": 4.2,
+    "tail_slot_width_mm": 8.6,
+    "ear_thickness_mm": 6.0,
+    "nominal_tail_side_clearance_total_mm": 0.5999999999999996,
+    "nominal_vertical_motor_to_rail_clearance_mm": 2.1500000000000057,
+    "lateral_placement": "X=±109 mm 是新增设计值，向外避让 20.5 mm 电机壳；不是原机横向铰点复原。",
+    "reference_registration": {
+      "source": "STL Files/Frame Side Blueprint.pdf + STL Files/Linear Actuator Holder.stl",
+      "native_inner_mount_z_mm": [
+        -10.804396152496338,
+        41.19560432434082
+      ],
+      "pdf_hole_centres_points": [
+        [
+          614.0171203613281,
+          340.44837951660156
+        ],
+        [
+          614.0171203613281,
+          487.8291473388672
+        ]
+      ],
+      "pdf_hole_pitch_mm": 51.99595496059663,
+      "recovered_pivot_z_mm": 10.453919986846298,
+      "recovered_longitudinal_y_mm": -0.008584349322266203,
+      "design_pivot_z_mm": 10.5,
+      "limitation": "原图没有尺寸标注；52 mm 孔对对应底座的判断为几何交叉核对，不是实机测量。"
+    },
+    "candidate": {
+      "source": "用户提供的淘宝无双耳款尺寸图；没有厂家三维实体或完整电气参数。",
+      "stroke_mm": 30.0,
+      "retracted_pitch_base_mm": 57.5,
+      "rear_ear_thickness_mm": 8.0,
+      "front_ear_thickness_mm": 6.1,
+      "eye_diameter_mm": 4.2,
+      "rear_eye_to_motor_mm": 9.2,
+      "motor_length_mm": 41.7,
+      "motor_width_in_motion_plane_mm": 20.5,
+      "motor_thickness_along_pin_mm": 15.0,
+      "front_eye_to_tube_mm": 5.6,
+      "retracted_eye_pitch_mm": 87.5,
+      "extended_eye_pitch_mm": 117.5,
+      "previous_seller_reference_eye_pitch_mm": [
+        85,
+        115
+      ],
+      "previous_seller_reference_is_verified_original": false
+    },
+    "hardware": {
+      "bolts": "2 颗 M4×30 圆柱头螺栓，头径≤7 mm、头高≤4 mm",
+      "nuts": "2 个 M4 防松螺母，对边≤7 mm、高≤5 mm",
+      "washers": "耳座外侧各 0.5 mm 垫片，外径≤9 mm；内侧按实物配置薄垫片或轴套",
+      "assembly": "尾耳位于双耳中间，销轴沿 Y 插入；保留摆动，不得夹紧塑料耳座消除间隙。"
+    },
+    "mechanism_motion_verified": false,
+    "limit": "仅交付尾耳接口。轮臂端仍使用原件；两端孔距与整机终点姿态尚未联动验证。"
   }
 }

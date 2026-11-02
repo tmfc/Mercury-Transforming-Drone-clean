@@ -18,6 +18,10 @@ from chassis_interfaces import (
     aligned_shoulders, connection_report, export_print_shoulders, export_registered_assembly,
     mesh_interference_volume, render_pdf_registration, verify_shoulder_fit,
 )
+from actuator_interfaces import (
+    PIVOT_X, PIVOT_Z, add_actuator_mounts, actuator_report,
+    render_actuator_connection, verify_actuator_fit,
+)
 from localization import chinese_font_path
 
 OUT = Path(__file__).resolve().parent
@@ -84,6 +88,7 @@ def build():
                       .sketch().rect(32, 44).vertices().fillet(6)
                       .finalize().extrude(side * 12))
             lower = lower.cut(window)
+    lower = add_actuator_mounts(lower)
 
     upper = rounded(W, L, CORNER, SPLIT + GAP, TOP - SPLIT - GAP)
     upper = upper.cut(rounded(W - 6, L - 6, 5,
@@ -136,7 +141,7 @@ def mesh_report(path):
     if not mesh.is_volume or len(mesh.split()) != 1:
         raise ValueError(f"{path.name}：不是单个闭合且朝外定向的实体")
     # 实际截取切片，覆盖最窄裙边及热熔螺母所在高度。
-    levels = [0.2, 4, 6, 9.8, 10.2, 19.5, 39, 70.5, 75, 78] if "Lower" in path.name else [0.2, 3.2, 10, 14.9, 16, 17]
+    levels = [0.2, 4, 6, 9.8, 10.2, 10.5, 17.4, 19.5, 39, 70.5, 75, 78] if "Lower" in path.name else [0.2, 3.2, 10, 14.9, 16, 17]
     contours = []
     for z in levels:
         section = mesh.section(plane_origin=[0, 0, z], plane_normal=[0, 0, 1])
@@ -180,15 +185,17 @@ def preview():
         mappers[name] = mapper
     window = vtk.vtkRenderWindow()
     window.SetOffScreenRendering(1)
-    window.SetSize(2100, 850)
+    window.SetSize(2000, 1600)
     scenes = [
-        ("一体式承力下舱与加强侧梁", None),
+        ("承力下舱与一体式推杆尾耳座", None),
         ("上盖与承力下舱（分解视图）", 55),
         ("配套改版肩座装配（无碳板）", 0),
+        ("推杆尾耳座局部（Ø4.2孔，8.6 mm净宽）", None),
     ]
     for i, (title, separation) in enumerate(scenes):
         renderer = vtk.vtkRenderer()
-        renderer.SetViewport(i / 3, 0, (i + 1) / 3, 1)
+        column, row = i % 2, i // 2
+        renderer.SetViewport(column / 2, 1 - (row + 1) / 2, (column + 1) / 2, 1 - row / 2)
         renderer.SetBackground(1, 1, 1)
         window.AddRenderer(renderer)
         names = ("Lower",) if separation is None else ("Lower", "Upper")
@@ -206,18 +213,22 @@ def preview():
             renderer.AddActor(actor)
         label = vtk.vtkTextActor()
         label.SetInput(title)
-        label.SetPosition(20, 800)
+        label.SetPosition(20, 20 if i == 3 else 750)
         label.GetTextProperty().SetFontSize(20)
         label.GetTextProperty().SetFontFamily(vtk.VTK_FONT_FILE)
         label.GetTextProperty().SetFontFile(font_path)
         label.GetTextProperty().SetColor(0.15, 0.15, 0.15)
         renderer.AddViewProp(label)
         camera = renderer.GetActiveCamera()
-        camera.SetPosition(280, -360, 310)
-        camera.SetFocalPoint(0, 0, 50)
+        if i == 3:
+            camera.SetPosition(PIVOT_X + 70, -80, 55)
+            camera.SetFocalPoint(PIVOT_X, 0, PIVOT_Z)
+        else:
+            camera.SetPosition(280, -360, 310)
+            camera.SetFocalPoint(0, 0, 50)
         camera.SetViewUp(0, 0, 1)
         camera.ParallelProjectionOn()
-        camera.SetParallelScale((180, 205, 265)[i])
+        camera.SetParallelScale((180, 205, 265, 32)[i])
         renderer.ResetCameraClippingRange()
     window.Render()
     image = vtk.vtkWindowToImageFilter()
@@ -256,9 +267,11 @@ def main():
     if collision_volume > 0.01:
         raise ValueError(f"导出网格装配干涉：{collision_volume}")
     shoulder_fit = verify_shoulder_fit(meshes[0], upper_assembled)
+    actuator_fit = verify_actuator_fit(meshes[0], upper_assembled)
     shoulder_prints = export_print_shoulders()
     export_registered_assembly(meshes[0], upper_assembled)
     render_pdf_registration()
+    render_actuator_connection()
     preview()
     report = {"units": "mm", "assembly_coordinates": "PDF 前后肩座中点为 Y=0，舱底为 Z=0，肩座中心高度 Z=45 mm。",
               "assembly_interference_mm3": interference,
@@ -268,6 +281,7 @@ def main():
                          "groove_depth_mm": 1.3, "closed_face_gap_mm": GAP,
                          "nominal_compression_percent": 20},
               "connection": registration, "shoulder_interference_mm3": shoulder_fit,
+              "actuator": actuator_report(), "actuator_fit": actuator_fit,
               "parts": reports, "adapted_shoulder_prints": shoulder_prints,
               "layout_check": {key: layout[key] for key in (
                   "all_bom_components_fit", "minimum_board_edge_gap_mm",

@@ -16,9 +16,12 @@ from shapely.geometry import LineString, Polygon, box
 from shapely.ops import polygonize, unary_union
 
 from chassis_interfaces import (
-    INNER_HOLE_Y, MOUNT_Z, RAIL_END, SHOULDER_SPACING, connection_report,
+    INNER_HOLE_Y, MOUNT_Z, RAIL_END, RAIL_INNER_X, SHOULDER_SPACING, connection_report,
 )
 from localization import configure_chinese_font
+from actuator_interfaces import (
+    EAR_OUTER_Y, EAR_RADIUS, EAR_THICKNESS, PIVOT_X, PIVOT_Z, TAIL_GAP, actuator_report,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = Path(__file__).resolve().parent
@@ -36,7 +39,7 @@ PLACEMENTS = {
     "MAIN1": (270, -16.49777, 17.48619),
     "CUBE": (0, -77.5, 48.21),
 }
-LABELS = {"PI": "树莓派 5", "CUBE": "Cube 飞控及标准载板", "RX": "Radiolink R8XM 接收机", "MAIN1": "主模块板外形 A", "MAIN2": "主模块板外形 B", "ACT1": "执行控制电路板"}
+LABELS = {"PI": "树莓派 5", "CUBE": "Cube 飞控及标准载板", "RX": "Radiolink R8XM 接收机", "MAIN1": "主模块板外形 A", "MAIN2": "空白外形占位（非功能板）", "ACT1": "执行控制电路板"}
 # （X 中心、Y 中心、X 长度、Y 长度）；均厚 2 mm、高 6 mm。
 # 分段定位挡而非封闭隔舱，保留走线通道。
 DIVIDERS = [
@@ -182,9 +185,13 @@ def bom_coverage():
             if name == "Lipo Battery (3S 2200mah)":
                 note = "共 2 块；厂家同系列参考尺寸为 105 × 33 × 14 mm，公差 ±3 mm，不含引线。需核对实际电池及装配包络；本模型未提供电池约束结构。" + BATTERY_SPEC
             elif name == "Custom PCBS":
-                note = "主模块 Gerber 中有两条独立外形，执行模块中有一条；需确认对应所用的三块板。已装元件可能占用凹口，不假定降压、ESP32 或 DRV 模块已包含在内。"
+                note = "主模块 Gerber 中有两条独立外形，但较小的 MAIN2 没有铜线、丝印或焊盘，仅保留外形占位；执行模块有一条外形。不能据此确认原清单的三块功能板已全部识别；不假定降压、ESP32 或 DRV 模块已包含在板上。"
             elif name == "Optical Flow MTF-01":
                 note += "；原清单链接指向 Ewing H7 飞控，并非 MTF-01 尺寸图。"
+            elif name == "120N Linear Actuator 1.2\"":
+                note = "原清单为 2 个推杆。新版下舱一体尾耳接口按用户淘宝图的 8 mm 尾耳与 Ø4.2 mm 孔设计，局部包络采用 30 mm 行程、87.5/117.5 mm 孔距；不代表原采购链接规格、整机运动或电气载荷已核实。"
+            elif name == "CF  30 cm x 30 cm (for frame)":
+                note = "本无碳板改型不使用碳纤维侧板；保留原清单和原图作为尺寸输入。"
             result.append({"item": name, "name_zh": row["名称（中文）"], "quantity": int(row["Units"]),
                            "status": status, "layout_ids": known.get(name, []),
                            "note": note, "bom_url": row["Link"]})
@@ -206,6 +213,11 @@ def render_diagrams():
     for x in (-96.6, 90.6):
         ax.add_patch(Rectangle((x, -RAIL_END), 6, 2 * RAIL_END,
                                fc="#d9e1e6", ec="#536775"))
+    for side in (-1, 1):
+        x_min = RAIL_INNER_X if side == 1 else -PIVOT_X - EAR_RADIUS
+        for y in (-EAR_OUTER_Y, TAIL_GAP / 2):
+            ax.add_patch(Rectangle((x_min, y), PIVOT_X + EAR_RADIUS - RAIL_INNER_X,
+                                   EAR_THICKNESS, fc="#dfa65a", ec="#805b2d"))
     ax.add_patch(FancyBboxPatch((-82.4, -100.6), 164.8, 201.2,
                               boxstyle="round,pad=0,rounding_size=8", fc="#ecf0f2", ec="#263541", lw=2))
     ax.add_patch(FancyBboxPatch((-79.4, -97.6), 158.8, 195.2,
@@ -219,7 +231,7 @@ def render_diagrams():
         ax.plot(x, y, "o", ms=3, color="#263541")
     for stop in divider_shapes():
         ax.add_patch(PatchPolygon(list(stop.exterior.coords), fc="#34414d", ec="none"))
-    ax.set(xlim=(-112, 112), ylim=(118, -118), xlabel="X 轴 / mm", ylabel="Y 轴 / mm",
+    ax.set(xlim=(-126, 126), ylim=(118, -118), xlabel="X 轴 / mm", ylabel="Y 轴 / mm",
            title="已知板件轮廓布局（俯视图）\n前方为 -Y；后壁格兰头接口位于 +Y")
     ax.set_aspect("equal"); ax.grid(alpha=.15)
     legend.axis("off")
@@ -231,7 +243,7 @@ def render_diagrams():
         _, _, w, h = original.bounds
         legend.add_patch(Rectangle((0, y-.015), .035, .03, fc=colors[name]))
         legend.text(.055, y, f"{name}：{LABELS[name]}\n{w:.2f} × {h:.2f} mm；依据见 Layout.json", fontsize=10, va="center")
-    legend.text(0, .26, "深色为矮挡：厚 2 mm，高出舱底 6 mm。\n分段留出走线缺口；矮挡不能代替紧固件。\n树莓派孔距 58 × 49 mm（已旋转）；Cube 为 85 × 34.4 mm。\n图中飞控位置并非已验证的整机重心位置。", fontsize=10, va="top")
+    legend.text(0, .26, "深色为矮挡：厚 2 mm，高出舱底 6 mm。\n分段留出走线缺口；矮挡不能代替紧固件。\n橙色为舱外一体式推杆尾耳座，孔轴沿 Y。\n树莓派孔距 58 × 49 mm（已旋转）；Cube 为 85 × 34.4 mm。\n图中飞控位置并非已验证的整机重心位置。", fontsize=10, va="top")
     legend.text(0, .13, "尚未分配位置，需核对装配尺寸：\n2 块电池、3 个降压模块、2 个 DRV8871、ESP32-S3、\n四合一电调、2 个行驶电调、通信模块、2 个 IMU 及线束。\n摄像头和光流需要朝外的光学接口。\n不假定这些模块能够放进电路板凹口。", fontsize=10, va="top", color="#a33a2e")
     fig.tight_layout(); fig.savefig(OUT / "Electronics_Layout.png", dpi=170); plt.close(fig)
 
@@ -241,6 +253,11 @@ def render_diagrams():
     ax.add_patch(Rectangle((-100.6, 4), 201.2, 74,
                            fc="#edf3f5", ec="#81949d"))
     ax.text(0, 39, "一体式承力下舱\n带开窗的箱形侧梁\n不使用碳纤维侧板", ha="center", va="center", fontsize=12)
+    for y in (-EAR_OUTER_Y, TAIL_GAP / 2):
+        ax.add_patch(Rectangle((y, 0), EAR_THICKNESS, PIVOT_Z + EAR_RADIUS,
+                               fc="#dfa65a", ec="#805b2d"))
+    ax.plot([-EAR_OUTER_Y, EAR_OUTER_Y], [PIVOT_Z, PIVOT_Z], color="#a43d32", lw=2)
+    ax.text(0, 20, "推杆尾耳座（左右重合投影）", ha="center", fontsize=9)
     for end, name in ((-1, "Front"), (1, "Rear")):
         center = end * SHOULDER_SPACING / 2
         ax.add_patch(Rectangle((center - 24.5, 12.5), 49, 65,
@@ -258,7 +275,7 @@ def render_diagrams():
     ax.text(0, -13, "使用配套 Direct 肩座，先从侧面装入 M3 螺母，再对接下舱。\n红色孔在另一侧对称设置，共用 8 颗 M3×25 螺栓及螺母；外侧孔排不用。\n仅完成静态几何配合检查，未认证承载、疲劳或完整运动行程。",
             ha="center", va="top", fontsize=10)
     ax.set(xlim=(-165, 165), ylim=(-38, 127), xlabel="装配 Y 轴 / mm", ylabel="Z 轴 / mm",
-           title="肩座与承力下舱直接连接示意（侧视投影）")
+           title="肩座与承力下舱连接示意（含推杆接口侧视投影）")
     ax.set_aspect("equal"); ax.grid(alpha=.1)
     fig.tight_layout(); fig.savefig(OUT / "ShoulderMount_Connection.png", dpi=170); plt.close(fig)
 
@@ -267,6 +284,7 @@ def generate_layout():
     report = check_layout()
     report["bom_coverage"] = bom_coverage()
     report["connection"] = connection_report()
+    report["actuator"] = actuator_report()
     render_diagrams()
     (OUT / "Layout.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return report
