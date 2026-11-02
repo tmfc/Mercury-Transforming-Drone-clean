@@ -1,6 +1,9 @@
+# MAVLink 命令参考
+# 激活原项目使用的虚拟环境：
 source .venv/bin/activate
 mavproxy.py --master=/dev/ttyAMA0 --baudrate 115200 --out=udp:127.0.0.1:14550
 
-
-
+# 上一条命令将遥测转发到本机 UDP 14550 端口。
+# 如还需转发到局域网设备，可使用下面原文保留的示例地址；
+# 192.168.1.105 只是示例，运行前应核对实际接收设备与网络配置。
 mavproxy.py --master=/dev/ttyAMA0 --baudrate 115200 --out=udp:127.0.0.1:14550 --out=udp:192.168.1.105:14600

@@ -1,12 +1,8 @@
 {
   "units": "mm",
-  "original_to_assembly_translation_mm": [
-    0,
-    0,
-    60.15
-  ],
+  "assembly_coordinates": "PDF 前后肩座中点为 Y=0，舱底为 Z=0，肩座中心高度 Z=45 mm。",
   "assembly_interference_mm3": 0.0,
-  "exported_mesh_interference_mm3": 0.0,
+  "exported_mesh_interference_mm3": 1.3339255626002947e-11,
   "registration_clearance_per_side_mm": 0.3,
   "gasket": {
     "cord_diameter_mm": 2,
@@ -15,109 +11,234 @@
     "closed_face_gap_mm": 0.3,
     "nominal_compression_percent": 20
   },
-  "original_mount_measurements": [
-    {
-      "x_section_mm": -89,
-      "hole_yz_mm": [
+  "connection": {
+    "direct_shoulder_mount": true,
+    "carbon_plates_required": false,
+    "load_path": "前后肩座内侧孔排 → 一体式外置连接耳与箱形侧梁 → 承力下舱。",
+    "pdf_registration": {
+      "source": "STL Files/Frame Side Blueprint.pdf",
+      "page": 1,
+      "method": "读取矢量圆孔中心，并以肩座 STL 测得的 42 mm 孔距标定。",
+      "pdf_pattern_centres_points": [
         [
-          -97.0999984741211,
-          -48.64648399448821
+          256.60705947875977,
+          359.2904968261719
         ],
         [
-          -26.0,
-          -48.14560508728027
-        ],
-        [
-          26.0,
-          -48.14560508728027
-        ],
-        [
-          97.0999984741211,
-          -48.64648399448821
+          971.4758453369141,
+          359.2904968261719
         ]
-      ]
+      ],
+      "pdf_pattern_pitch_at_1to1_mm": [
+        [
+          41.9973369386461,
+          51.00583368937174
+        ],
+        [
+          41.99733963012695,
+          51.00583368937174
+        ]
+      ],
+      "pdf_calibrated_spacing_mm": 252.20580501414287,
+      "design_shoulder_spacing_mm": 252.2,
+      "design_inner_row_spacing_mm": 210.2,
+      "limitation": "PDF 未明确标注肩座间距；此值为图纸反推的设计参考，不是已认证的实机测量。"
     },
-    {
-      "x_section_mm": 89,
-      "hole_yz_mm": [
-        [
-          -97.0999984741211,
-          -48.64648399448821
-        ],
-        [
-          -26.0,
-          -48.14663047902286
-        ],
-        [
-          26.0,
-          -48.14663047902286
-        ],
-        [
-          97.0999984741211,
-          -48.64648399448821
+    "shoulder_center_z_mm": 45.0,
+    "used_bolts": 8,
+    "used_hole_rows_y_mm": [
+      -105.1,
+      105.1
+    ],
+    "used_hole_levels_z_mm": [
+      19.5,
+      70.5
+    ],
+    "printed_hole_diameter_mm": 3.2,
+    "nominal_side_mating_gap_mm": 0.19999999999998863,
+    "hole_selection": "每个肩座每侧采用内排两孔，外排孔不使用。应使用生成的 Direct 改版肩座，不能混用原始输入 STL。",
+    "shoulder_modification": {
+      "nut_pocket_across_flats_mm": 5.8,
+      "nut_pocket_depth_mm": 4.2,
+      "nut_max_across_flats_mm": 5.5,
+      "nut_max_height_mm": 4,
+      "side_feed": "开口朝电子舱一侧；对接下舱前先装入螺母。"
+    },
+    "strength_status": "仅验证几何；未进行承载、疲劳、冲击或整套机构全行程验证。",
+    "measurements": [
+      {
+        "part": "ShoulderMount - Front.stl",
+        "side_patterns": [
+          {
+            "x_section_mm": -89,
+            "original_yz_centres_mm": [
+              [
+                -21.0,
+                -25.503590606368086
+              ],
+              [
+                -21.0,
+                25.496013896117802
+              ],
+              [
+                21.0,
+                -25.503590606368086
+              ],
+              [
+                21.0,
+                25.496013896117802
+              ]
+            ]
+          },
+          {
+            "x_section_mm": 89,
+            "original_yz_centres_mm": [
+              [
+                -21.0,
+                25.503986103882198
+              ],
+              [
+                -20.99933894893443,
+                -25.495603561401367
+              ],
+              [
+                21.0,
+                25.503986103882198
+              ],
+              [
+                21.00066090452355,
+                -25.495603561401367
+              ]
+            ]
+          }
         ]
-      ]
+      },
+      {
+        "part": "ShoulderMount - Rear.stl",
+        "side_patterns": [
+          {
+            "x_section_mm": -89,
+            "original_yz_centres_mm": [
+              [
+                327.0,
+                -25.503590606368086
+              ],
+              [
+                327.0,
+                25.496013896117802
+              ],
+              [
+                369.0,
+                -25.503590606368086
+              ],
+              [
+                369.0,
+                25.496013896117802
+              ]
+            ]
+          },
+          {
+            "x_section_mm": 89,
+            "original_yz_centres_mm": [
+              [
+                327.0,
+                25.503986103882198
+              ],
+              [
+                327.0006611976076,
+                -25.495603561401367
+              ],
+              [
+                369.0,
+                25.503986103882198
+              ],
+              [
+                369.0006611976076,
+                -25.495603561401367
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "shoulder_interference_mm3": {
+    "Front": {
+      "Lower": 0.0,
+      "Upper": 0.0,
+      "nut_envelope": 0.0,
+      "M3x25_bolt_envelope": 0.0
+    },
+    "Rear": {
+      "Lower": 0.0,
+      "Upper": 0.0,
+      "nut_envelope": 0.0,
+      "M3x25_bolt_envelope": 0.0
     }
-  ],
+  },
   "parts": [
     {
       "file": "Electronics_Bay_Lower.stl",
-      "triangles": 33212,
+      "triangles": 38804,
       "watertight": true,
       "connected_solids": 1,
       "bounds_mm": [
         [
-          -90.4000015258789,
           -100.5999984741211,
+          -108.0999984741211,
           0.0
         ],
         [
-          90.4000015258789,
           100.5999984741211,
-          45.29999923706055
+          108.0999984741211,
+          78.30000305175781
         ]
       ],
       "size_mm": [
-        180.8000030517578,
         201.1999969482422,
-        45.29999923706055
+        216.1999969482422,
+        78.30000305175781
       ],
-      "solid_volume_cm3": 230.23271181211015,
+      "solid_volume_cm3": 553.4973168360684,
       "slice_checks": [
         {
           "z_mm": 0.2,
           "closed_loops": 1
         },
         {
-          "z_mm": 3,
-          "closed_loops": 10
-        },
-        {
-          "z_mm": 8,
+          "z_mm": 4,
           "closed_loops": 18
         },
         {
-          "z_mm": 15,
-          "closed_loops": 2
+          "z_mm": 6,
+          "closed_loops": 30
         },
         {
-          "z_mm": 25,
-          "closed_loops": 2
+          "z_mm": 9.8,
+          "closed_loops": 30
         },
         {
-          "z_mm": 35,
-          "closed_loops": 2
+          "z_mm": 10.2,
+          "closed_loops": 6
         },
         {
-          "z_mm": 42,
+          "z_mm": 19.5,
           "closed_loops": 10
         },
         {
-          "z_mm": 44,
-          "closed_loops": 12
+          "z_mm": 39,
+          "closed_loops": 6
         },
         {
-          "z_mm": 45,
+          "z_mm": 70.5,
+          "closed_loops": 14
+        },
+        {
+          "z_mm": 75,
+          "closed_loops": 10
+        },
+        {
+          "z_mm": 78,
           "closed_loops": 16
         }
       ]
@@ -144,7 +265,7 @@
         201.1999969482422,
         17.500000000000014
       ],
-      "solid_volume_cm3": 147.05620208986826,
+      "solid_volume_cm3": 147.05620208986818,
       "slice_checks": [
         {
           "z_mm": 0.2,
@@ -172,5 +293,34 @@
         }
       ]
     }
-  ]
+  ],
+  "adapted_shoulder_prints": [
+    {
+      "file": "ShoulderMount_Front_Direct.stl",
+      "size_mm": [
+        239.6194305419922,
+        239.6194305419922,
+        84.97954559326172
+      ],
+      "watertight": true,
+      "connected_solids": 1
+    },
+    {
+      "file": "ShoulderMount_Rear_Direct.stl",
+      "size_mm": [
+        239.6194305419922,
+        239.6194305419922,
+        84.97954559326172
+      ],
+      "watertight": true,
+      "connected_solids": 1
+    }
+  ],
+  "layout_check": {
+    "all_bom_components_fit": null,
+    "minimum_board_edge_gap_mm": 3.999999999999991,
+    "minimum_board_to_stop_gap_mm": 0.9991500000000001,
+    "divider_count": 8,
+    "divider_height_above_floor_mm": 6.0
+  }
 }

@@ -1,4 +1,6 @@
-How to Order PCB
+PCB（电路板）下单说明
 
-Please refer to:
+请参考 EasyEDA 的 PCB 下单指南：
 https://docs.easyeda.com/en/PCB/Order-PCB
+
+保留原版官方链接；若网站提供语言切换，可选择中文界面。Gerber 和钻孔文件属于制造源数据，本次仅翻译说明，不改动制造文件。

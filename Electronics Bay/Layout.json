@@ -1,0 +1,518 @@
+{
+  "all_bom_components_fit": null,
+  "conclusion": "已知平面轮廓可排入；装配后高度及整套物料尚未验证能否容纳。",
+  "minimum_board_edge_gap_mm": 3.999999999999991,
+  "minimum_board_to_stop_gap_mm": 0.9991500000000001,
+  "divider_height_above_floor_mm": 6.0,
+  "divider_count": 8,
+  "board_outlines": [
+    {
+      "id": "MAIN1",
+      "label": "主模块板外形 A",
+      "unrotated_size_xy_mm": [
+        75.01381,
+        93.99777
+      ],
+      "placed_bounds_xy_mm": [
+        -16.49777,
+        17.486189999999993,
+        77.5,
+        92.5
+      ],
+      "height_mm": null,
+      "height_note": "尚无已装配元件的可靠高度。",
+      "source": "PCB Files/Gerber_RatbirdV3-MainModule_PCB_RatbirdV3-MainModule_2026-03-05/Gerber_BoardOutlineLayer.GKO"
+    },
+    {
+      "id": "MAIN2",
+      "label": "主模块板外形 B",
+      "unrotated_size_xy_mm": [
+        47.87903,
+        79.12100000000001
+      ],
+      "placed_bounds_xy_mm": [
+        -77.5,
+        -95.5,
+        1.6210000000000093,
+        -47.62097
+      ],
+      "height_mm": null,
+      "height_note": "尚无已装配元件的可靠高度。",
+      "source": "PCB Files/Gerber_RatbirdV3-MainModule_PCB_RatbirdV3-MainModule_2026-03-05/Gerber_BoardOutlineLayer.GKO"
+    },
+    {
+      "id": "ACT1",
+      "label": "执行控制电路板",
+      "unrotated_size_xy_mm": [
+        88.00085,
+        53.03774
+      ],
+      "placed_bounds_xy_mm": [
+        5.621,
+        -74.5,
+        58.65874,
+        13.50085
+      ],
+      "height_mm": null,
+      "height_note": "尚无已装配元件的可靠高度。",
+      "source": "PCB Files/Gerber_RatbirdV3-ActuationModule_PCB_RatbirdV3-ActuationModule_2026-03-05/Gerber_BoardOutlineLayer.GKO"
+    },
+    {
+      "id": "PI",
+      "label": "树莓派 5",
+      "unrotated_size_xy_mm": [
+        85.0,
+        56.0
+      ],
+      "placed_bounds_xy_mm": [
+        -77.5,
+        -43.62097,
+        -21.5,
+        41.37903
+      ],
+      "height_mm": null,
+      "height_note": "尚无已装配元件的可靠高度。",
+      "source": "https://pip.raspberrypi.com/documents/RP-008347-DS-1-raspberry-pi-5-mechanical-drawing.pdf"
+    },
+    {
+      "id": "CUBE",
+      "label": "Cube 飞控及标准载板",
+      "unrotated_size_xy_mm": [
+        94.46,
+        44.29
+      ],
+      "placed_bounds_xy_mm": [
+        -77.5,
+        48.21,
+        16.959999999999994,
+        92.5
+      ],
+      "height_mm": 31.42,
+      "height_note": "仅为标准载板参考，需核对实际 Orange+ 套装。",
+      "source": "https://docs.cubepilot.org/carrier-boards/standard-carrier-board-footprint-and-dimensions"
+    },
+    {
+      "id": "RX",
+      "label": "Radiolink R8XM 接收机",
+      "unrotated_size_xy_mm": [
+        22.0,
+        17.0
+      ],
+      "placed_bounds_xy_mm": [
+        55.5,
+        -95.5,
+        77.5,
+        -78.5
+      ],
+      "height_mm": null,
+      "height_note": "尚无已装配元件的可靠高度。",
+      "source": "https://www.radiolink.com/en/r8xm_specifications"
+    }
+  ],
+  "bom_coverage": [
+    {
+      "item": "120N Linear Actuator 1.2\"",
+      "name_zh": "120 N 线性执行器（行程 1.2 英寸）",
+      "quantity": 2,
+      "status": "outside_electronics_cavity",
+      "layout_ids": [],
+      "note": "机架、执行器、动力或装配五金，位于电子舱之外。",
+      "bom_url": "https://a.co/d/f1gvmVA"
+    },
+    {
+      "item": "8 inch propellers",
+      "name_zh": "8 英寸螺旋桨",
+      "quantity": 4,
+      "status": "outside_electronics_cavity",
+      "layout_ids": [],
+      "note": "机架、执行器、动力或装配五金，位于电子舱之外。",
+      "bom_url": "https://a.co/d/bCJhVNM"
+    },
+    {
+      "item": "BLDC Motor (A2812 2812 900KV)",
+      "name_zh": "无刷直流电机（A2812 2812 900KV）",
+      "quantity": 4,
+      "status": "outside_electronics_cavity",
+      "layout_ids": [],
+      "note": "机架、执行器、动力或装配五金，位于电子舱之外。",
+      "bom_url": "https://a.co/d/0YZLBnR"
+    },
+    {
+      "item": "Raspberry Pi 5",
+      "name_zh": "树莓派 5",
+      "quantity": 1,
+      "status": "outline_only",
+      "layout_ids": [
+        "PI"
+      ],
+      "note": "图中仅展示板件轮廓；装配后的元件及接插件尚未验证。",
+      "bom_url": "https://a.co/d/0e89eMiw"
+    },
+    {
+      "item": "Mobile Data Dongle",
+      "name_zh": "移动数据通信模块",
+      "quantity": 1,
+      "status": "not_allocated",
+      "layout_ids": [],
+      "note": "尚无已验证的装配包络及位置，不能认定整套物料均可容纳。",
+      "bom_url": "https://a.co/d/clkxkL8"
+    },
+    {
+      "item": "Lipo Battery (3S 2200mah)",
+      "name_zh": "锂聚合物电池（3S 2200 mAh）",
+      "quantity": 2,
+      "status": "not_allocated",
+      "layout_ids": [],
+      "note": "共 2 块；厂家同系列参考尺寸为 105 × 33 × 14 mm，公差 ±3 mm，不含引线。需核对实际电池及装配包络；本模型未提供电池约束结构。https://us.ovonicshop.com/products/ovonic-3s-50c-11-1v-2200mah-lipo-battery-pack-with-deans-t-plug-for-rc-airplane-helicopter-quadcopter-rc-car-truck-boat",
+      "bom_url": "https://a.co/d/04b29lgE"
+    },
+    {
+      "item": "Screws (3mm x 10mm)",
+      "name_zh": "螺钉（直径 3 mm × 长度 10 mm）",
+      "quantity": 10,
+      "status": "outside_electronics_cavity",
+      "layout_ids": [],
+      "note": "机架、执行器、动力或装配五金，位于电子舱之外。",
+      "bom_url": "ACE Hardware"
+    },
+    {
+      "item": "Screws (3mm x 30 mm)",
+      "name_zh": "螺钉（直径 3 mm × 长度 30 mm）",
+      "quantity": 20,
+      "status": "outside_electronics_cavity",
+      "layout_ids": [],
+      "note": "机架、执行器、动力或装配五金，位于电子舱之外。",
+      "bom_url": "ACE Hardware"
+    },
+    {
+      "item": "Screws (3mm x 50 mm)",
+      "name_zh": "螺钉（直径 3 mm × 长度 50 mm）",
+      "quantity": 10,
+      "status": "outside_electronics_cavity",
+      "layout_ids": [],
+      "note": "机架、执行器、动力或装配五金，位于电子舱之外。",
+      "bom_url": "ACE Hardware"
+    },
+    {
+      "item": "CF  30 cm x 30 cm (for frame)",
+      "name_zh": "碳纤维板（30 cm × 30 cm 原版机架用）",
+      "quantity": 2,
+      "status": "outside_electronics_cavity",
+      "layout_ids": [],
+      "note": "机架、执行器、动力或装配五金，位于电子舱之外。",
+      "bom_url": "https://a.co/d/0dzbtn5p"
+    },
+    {
+      "item": "8 awg cable",
+      "name_zh": "8 AWG 电缆",
+      "quantity": 1,
+      "status": "not_allocated",
+      "layout_ids": [],
+      "note": "尚无已验证的装配包络及位置，不能认定整套物料均可容纳。",
+      "bom_url": "https://www.amazon.com/dp/B07B8N6751?ref_=ppx_hzod_title_dt_b_fed_asin_title_0_1"
+    },
+    {
+      "item": "T Plug Pairs",
+      "name_zh": "T 型插头配对",
+      "quantity": 2,
+      "status": "not_allocated",
+      "layout_ids": [],
+      "note": "尚无已验证的装配包络及位置，不能认定整套物料均可容纳。",
+      "bom_url": "https://www.amazon.com/dp/B01C8NWJ78?ref_=ppx_hzod_title_dt_b_fed_asin_title_0_0"
+    },
+    {
+      "item": "XT60 Male & Female",
+      "name_zh": "XT60 公母插头",
+      "quantity": 1,
+      "status": "not_allocated",
+      "layout_ids": [],
+      "note": "尚无已验证的装配包络及位置，不能认定整套物料均可容纳。",
+      "bom_url": "https://www.amazon.com/dp/B0CMM1BBDQ?ref_=ppx_hzod_title_dt_b_fed_asin_title_0_0"
+    },
+    {
+      "item": "IMU (MPU 9250)",
+      "name_zh": "MPU9250 惯性测量模块",
+      "quantity": 2,
+      "status": "not_allocated",
+      "layout_ids": [],
+      "note": "尚无已验证的装配包络及位置，不能认定整套物料均可容纳。",
+      "bom_url": "https://www.amazon.com/dp/B01I1J0Z7Y?ref_=ppx_hzod_title_dt_b_fed_asin_title_0_1"
+    },
+    {
+      "item": "TOF Camera",
+      "name_zh": "飞行时间深度摄像头",
+      "quantity": 1,
+      "status": "external_optical_interface",
+      "layout_ids": [],
+      "note": "需要朝向外部的有效光路及独立密封安装接口；该器件并未从整机需求中删除。",
+      "bom_url": "https://www.amazon.com/dp/B0BRB12W7Y?ref_=ppx_hzod_title_dt_b_fed_asin_title_0_0"
+    },
+    {
+      "item": "ESP32S3",
+      "name_zh": "ESP32-S3 控制器",
+      "quantity": 1,
+      "status": "not_allocated",
+      "layout_ids": [],
+      "note": "尚无已验证的装配包络及位置，不能认定整套物料均可容纳。",
+      "bom_url": "https://a.co/d/0fMawJYb"
+    },
+    {
+      "item": "USB Webcam",
+      "name_zh": "USB 摄像头",
+      "quantity": 1,
+      "status": "external_optical_interface",
+      "layout_ids": [],
+      "note": "需要朝向外部的有效光路及独立密封安装接口；该器件并未从整机需求中删除。",
+      "bom_url": "https://www.amazon.com/640x480-Building-Arduino-Raspberry-Robotic/dp/B0CT35HQJ5/ref=sr_1_3?crid=1QJ8RK7U8VKNT&dib=eyJ2IjoiMSJ9.66s88j2_grmFEw0fNfKI2v3d7B-PMXzMkgaX9qUinZnxrqKUucnmuesVa0GyeSst_X6PuXbYMVzHrZvdjHmznxKGTDT2V1fF-VrbklSqERBwjnTnaKBwWnxqpfEubXGVVsnnOS1fkBU6UQYdRD2y6LEiCBgxwfjYWeLgjYZMY1hf51N7UuQRCuFxe4zMclfKLxsIZCTuc8HBa4tMIBqjw3c8qOM5SUcADybyln3_Vag.SYqQA0_dfK-JxM0PnQdMPqXAihry-F3Zp72aLhLSe_s&dib_tag=se&keywords=webcam%2Bdiy&qid=1758536420&sprefix=webcam%2Caps%2C437&sr=8-3&th=1"
+    },
+    {
+      "item": "Buck Converter",
+      "name_zh": "降压模块",
+      "quantity": 3,
+      "status": "not_allocated",
+      "layout_ids": [],
+      "note": "尚无已验证的装配包络及位置，不能认定整套物料均可容纳。",
+      "bom_url": "https://www.amazon.com/sspa/click?ie=UTF8&spc=MToxMDA1ODQzNjQ5MDcwMTA1OjE3NTg1MzY2ODU6c3BfYXRmOjMwMDM5ODk2MDk4NzQwMjo6MDo6&url=%2FSeloky-Converter-Adjustable-Electronic-Stabilizer%2Fdp%2FB0DBVYP91F%2Fref%3Dsr_1_1_sspa%3Fcrid%3DUM4K2PO4WR9A%26dib%3DeyJ2IjoiMSJ9.TXxwhXnWHHA9-07eTYmM2Ur6QKDyny76v89qXv_wVkvHeoh85Ld3c13DRtUydX3Nxl66EFRSafWk7ooU8oRIl2R1u5JPP9ssZbqzbG08ryLaNNI1iltPF7q9S3d17ltaRimpHl9JVMTwN4f0kMWlyiaTdtqQEFA1bAX4zUxr82fcTaeq0Ka_81YO0g-fMCSwV-zkDq17pK3Fa3CeYbab0XUd-Aa6s7VfnU05p18M0BE.rl8CCtSRDAKypJtHxeai_UQuObt_Z8zk_LvOeu9oBow%26dib_tag%3Dse%26keywords%3Dbuck%2Bconverter%26qid%3D1758536685%26sprefix%3Dbuck%2Bconver%252Caps%252C784%26sr%3D8-1-spons%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9hdGY%26psc%3D1"
+    },
+    {
+      "item": "Radiolink R8XM",
+      "name_zh": "Radiolink R8XM 接收机",
+      "quantity": 1,
+      "status": "outline_only",
+      "layout_ids": [
+        "RX"
+      ],
+      "note": "图中仅展示板件轮廓；装配后的元件及接插件尚未验证。",
+      "bom_url": "https://www.amazon.com/dp/B0BCPDLWXZ?ref_=ppx_hzod_title_dt_b_fed_asin_title_0_0"
+    },
+    {
+      "item": "DRV8871 H Bridge",
+      "name_zh": "DRV8871 H 桥电机驱动模块",
+      "quantity": 2,
+      "status": "not_allocated",
+      "layout_ids": [],
+      "note": "尚无已验证的装配包络及位置，不能认定整套物料均可容纳。",
+      "bom_url": "https://a.co/d/iBVBORv"
+    },
+    {
+      "item": "Cube + Flight Controller",
+      "name_zh": "Cube 飞控及载板",
+      "quantity": 1,
+      "status": "outline_only",
+      "layout_ids": [
+        "CUBE"
+      ],
+      "note": "图中仅展示板件轮廓；装配后的元件及接插件尚未验证。",
+      "bom_url": "https://a.co/d/19FUWXO"
+    },
+    {
+      "item": "SEQURE 4in1 ESC 70A",
+      "name_zh": "SEQURE 70 A 四合一电子调速器",
+      "quantity": 1,
+      "status": "not_allocated",
+      "layout_ids": [],
+      "note": "尚无已验证的装配包络及位置，不能认定整套物料均可容纳。",
+      "bom_url": "https://a.co/d/5X12oWn"
+    },
+    {
+      "item": "Custom PCBS",
+      "name_zh": "自制电路板",
+      "quantity": 3,
+      "status": "outline_only",
+      "layout_ids": [
+        "MAIN1",
+        "MAIN2",
+        "ACT1"
+      ],
+      "note": "主模块 Gerber 中有两条独立外形，执行模块中有一条；需确认对应所用的三块板。已装元件可能占用凹口，不假定降压、ESP32 或 DRV 模块已包含在内。",
+      "bom_url": "EasyEDA"
+    },
+    {
+      "item": "BLDC Motor 140kv (for driving)",
+      "name_zh": "行驶用 140KV 无刷直流电机",
+      "quantity": 2,
+      "status": "outside_electronics_cavity",
+      "layout_ids": [],
+      "note": "机架、执行器、动力或装配五金，位于电子舱之外。",
+      "bom_url": "https://a.co/d/iKZayiN"
+    },
+    {
+      "item": "Optical Flow MTF-01",
+      "name_zh": "MTF-01 光流模块",
+      "quantity": 1,
+      "status": "external_optical_interface",
+      "layout_ids": [],
+      "note": "需要朝向外部的有效光路及独立密封安装接口；该器件并未从整机需求中删除。；原清单链接指向 Ewing H7 飞控，并非 MTF-01 尺寸图。",
+      "bom_url": "https://www.ewingaerospace.com/products/ewing-aerospace-h7-flight-controller-ndaa-compliant-and-blueuas?variant=43614880235629#ae25b710efd3879edefdaa1ee38410ce"
+    },
+    {
+      "item": "Thermal Camera",
+      "name_zh": "热成像摄像头",
+      "quantity": 1,
+      "status": "external_optical_interface",
+      "layout_ids": [],
+      "note": "需要朝向外部的有效光路及独立密封安装接口；该器件并未从整机需求中删除。",
+      "bom_url": "https://a.co/d/dZ3TK0W"
+    },
+    {
+      "item": "Bidirectional ESC 50A (for driving)",
+      "name_zh": "行驶用 50 A 双向电子调速器",
+      "quantity": 2,
+      "status": "not_allocated",
+      "layout_ids": [],
+      "note": "尚无已验证的装配包络及位置，不能认定整套物料均可容纳。",
+      "bom_url": "https://a.co/d/00C138fG"
+    }
+  ],
+  "connection": {
+    "direct_shoulder_mount": true,
+    "carbon_plates_required": false,
+    "load_path": "前后肩座内侧孔排 → 一体式外置连接耳与箱形侧梁 → 承力下舱。",
+    "pdf_registration": {
+      "source": "STL Files/Frame Side Blueprint.pdf",
+      "page": 1,
+      "method": "读取矢量圆孔中心，并以肩座 STL 测得的 42 mm 孔距标定。",
+      "pdf_pattern_centres_points": [
+        [
+          256.60705947875977,
+          359.2904968261719
+        ],
+        [
+          971.4758453369141,
+          359.2904968261719
+        ]
+      ],
+      "pdf_pattern_pitch_at_1to1_mm": [
+        [
+          41.9973369386461,
+          51.00583368937174
+        ],
+        [
+          41.99733963012695,
+          51.00583368937174
+        ]
+      ],
+      "pdf_calibrated_spacing_mm": 252.20580501414287,
+      "design_shoulder_spacing_mm": 252.2,
+      "design_inner_row_spacing_mm": 210.2,
+      "limitation": "PDF 未明确标注肩座间距；此值为图纸反推的设计参考，不是已认证的实机测量。"
+    },
+    "shoulder_center_z_mm": 45.0,
+    "used_bolts": 8,
+    "used_hole_rows_y_mm": [
+      -105.1,
+      105.1
+    ],
+    "used_hole_levels_z_mm": [
+      19.5,
+      70.5
+    ],
+    "printed_hole_diameter_mm": 3.2,
+    "nominal_side_mating_gap_mm": 0.19999999999998863,
+    "hole_selection": "每个肩座每侧采用内排两孔，外排孔不使用。应使用生成的 Direct 改版肩座，不能混用原始输入 STL。",
+    "shoulder_modification": {
+      "nut_pocket_across_flats_mm": 5.8,
+      "nut_pocket_depth_mm": 4.2,
+      "nut_max_across_flats_mm": 5.5,
+      "nut_max_height_mm": 4,
+      "side_feed": "开口朝电子舱一侧；对接下舱前先装入螺母。"
+    },
+    "strength_status": "仅验证几何；未进行承载、疲劳、冲击或整套机构全行程验证。",
+    "measurements": [
+      {
+        "part": "ShoulderMount - Front.stl",
+        "side_patterns": [
+          {
+            "x_section_mm": -89,
+            "original_yz_centres_mm": [
+              [
+                -21.0,
+                -25.503590606368086
+              ],
+              [
+                -21.0,
+                25.496013896117802
+              ],
+              [
+                21.0,
+                -25.503590606368086
+              ],
+              [
+                21.0,
+                25.496013896117802
+              ]
+            ]
+          },
+          {
+            "x_section_mm": 89,
+            "original_yz_centres_mm": [
+              [
+                -21.0,
+                25.503986103882198
+              ],
+              [
+                -20.99933894893443,
+                -25.495603561401367
+              ],
+              [
+                21.0,
+                25.503986103882198
+              ],
+              [
+                21.00066090452355,
+                -25.495603561401367
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "part": "ShoulderMount - Rear.stl",
+        "side_patterns": [
+          {
+            "x_section_mm": -89,
+            "original_yz_centres_mm": [
+              [
+                327.0,
+                -25.503590606368086
+              ],
+              [
+                327.0,
+                25.496013896117802
+              ],
+              [
+                369.0,
+                -25.503590606368086
+              ],
+              [
+                369.0,
+                25.496013896117802
+              ]
+            ]
+          },
+          {
+            "x_section_mm": 89,
+            "original_yz_centres_mm": [
+              [
+                327.0,
+                25.503986103882198
+              ],
+              [
+                327.0006611976076,
+                -25.495603561401367
+              ],
+              [
+                369.0,
+                25.503986103882198
+              ],
+              [
+                369.0006611976076,
+                -25.495603561401367
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
