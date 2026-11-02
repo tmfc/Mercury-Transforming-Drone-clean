@@ -1,0 +1,176 @@
+{
+  "units": "mm",
+  "original_to_assembly_translation_mm": [
+    0,
+    0,
+    60.15
+  ],
+  "assembly_interference_mm3": 0.0,
+  "exported_mesh_interference_mm3": 0.0,
+  "registration_clearance_per_side_mm": 0.3,
+  "gasket": {
+    "cord_diameter_mm": 2,
+    "groove_width_mm": 2.4,
+    "groove_depth_mm": 1.3,
+    "closed_face_gap_mm": 0.3,
+    "nominal_compression_percent": 20
+  },
+  "original_mount_measurements": [
+    {
+      "x_section_mm": -89,
+      "hole_yz_mm": [
+        [
+          -97.0999984741211,
+          -48.64648399448821
+        ],
+        [
+          -26.0,
+          -48.14560508728027
+        ],
+        [
+          26.0,
+          -48.14560508728027
+        ],
+        [
+          97.0999984741211,
+          -48.64648399448821
+        ]
+      ]
+    },
+    {
+      "x_section_mm": 89,
+      "hole_yz_mm": [
+        [
+          -97.0999984741211,
+          -48.64648399448821
+        ],
+        [
+          -26.0,
+          -48.14663047902286
+        ],
+        [
+          26.0,
+          -48.14663047902286
+        ],
+        [
+          97.0999984741211,
+          -48.64648399448821
+        ]
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "file": "Electronics_Bay_Lower.stl",
+      "triangles": 33212,
+      "watertight": true,
+      "connected_solids": 1,
+      "bounds_mm": [
+        [
+          -90.4000015258789,
+          -100.5999984741211,
+          0.0
+        ],
+        [
+          90.4000015258789,
+          100.5999984741211,
+          45.29999923706055
+        ]
+      ],
+      "size_mm": [
+        180.8000030517578,
+        201.1999969482422,
+        45.29999923706055
+      ],
+      "solid_volume_cm3": 230.23271181211015,
+      "slice_checks": [
+        {
+          "z_mm": 0.2,
+          "closed_loops": 1
+        },
+        {
+          "z_mm": 3,
+          "closed_loops": 10
+        },
+        {
+          "z_mm": 8,
+          "closed_loops": 18
+        },
+        {
+          "z_mm": 15,
+          "closed_loops": 2
+        },
+        {
+          "z_mm": 25,
+          "closed_loops": 2
+        },
+        {
+          "z_mm": 35,
+          "closed_loops": 2
+        },
+        {
+          "z_mm": 42,
+          "closed_loops": 10
+        },
+        {
+          "z_mm": 44,
+          "closed_loops": 12
+        },
+        {
+          "z_mm": 45,
+          "closed_loops": 16
+        }
+      ]
+    },
+    {
+      "file": "Electronics_Bay_Upper.stl",
+      "triangles": 13084,
+      "watertight": true,
+      "connected_solids": 1,
+      "bounds_mm": [
+        [
+          -90.39845275878906,
+          -100.5999984741211,
+          -1.518939122158343e-14
+        ],
+        [
+          90.39845275878906,
+          100.5999984741211,
+          17.5
+        ]
+      ],
+      "size_mm": [
+        180.79690551757812,
+        201.1999969482422,
+        17.500000000000014
+      ],
+      "solid_volume_cm3": 147.05620208986826,
+      "slice_checks": [
+        {
+          "z_mm": 0.2,
+          "closed_loops": 9
+        },
+        {
+          "z_mm": 3.2,
+          "closed_loops": 10
+        },
+        {
+          "z_mm": 10,
+          "closed_loops": 10
+        },
+        {
+          "z_mm": 14.9,
+          "closed_loops": 10
+        },
+        {
+          "z_mm": 16,
+          "closed_loops": 2
+        },
+        {
+          "z_mm": 17,
+          "closed_loops": 2
+        }
+      ]
+    }
+  ]
+}
