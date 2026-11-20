@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { STLLoader } from 'three/addons/loaders/STLLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 const container = document.getElementById('cube3d');
@@ -25,26 +24,7 @@ controls.update();
 const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
 scene.add(ambientLight);
 
-const loader = new STLLoader();
-loader.load('models/V2-FR.stl', function (geometry) {
-  geometry.center();
-
-  const material = new THREE.MeshNormalMaterial();
-  const mesh = new THREE.Mesh(geometry, material);
-
-  mesh.scale.set(0.02, 0.02, 0.02);     // Scale down
-  mesh.rotation.x = -Math.PI / 2;       // Rotate 90° on X-axis
-  mesh.position.y = 5.0;                  // Slightly lower the model
-
-  scene.add(mesh);
-
-  // Add road/ground plane
-  addRoadToScene();
-
-  console.log("✅ STL loaded, zoomed in, and adjusted.");
-}, undefined, function (error) {
-  console.error("❌ STL load error:", error);
-});
+addRoadToScene();
 
 // Add road/ground plane with markings
 function addRoadToScene() {

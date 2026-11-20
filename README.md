@@ -7,7 +7,7 @@
 ![Three.js](https://img.shields.io/badge/Three.js-000000?style=flat&logo=threedotjs&logoColor=white)
 ![Leaflet](https://img.shields.io/badge/Leaflet-199900?style=flat&logo=leaflet&logoColor=white)
 
-![Mercury 项目横幅](Media/Banner.png)
+![Mercury 项目横幅](Media/Banner.webp)
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/mercuriustech)
 [![Patreon](https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white)](https://www.patreon.com/c/MercuriusTech)
@@ -39,8 +39,8 @@
     <td width="50%" align="center"><b>简易变形机构</b></td>
   </tr>
   <tr>
-    <td width="50%" align="center"><img src="Media/InnerPayload 2.png" alt="原版内置货舱" width="100%"/></td>
-    <td width="50%" align="center"><img src="Media/LinearActuators.png" alt="简易变形机构" width="100%"/></td>
+    <td width="50%" align="center"><img src="Media/InnerPayload%202.webp" alt="原版内置货舱" width="100%"/></td>
+    <td width="50%" align="center"><img src="Media/LinearActuators.webp" alt="简易变形机构" width="100%"/></td>
   </tr>
 </table>
 
@@ -51,7 +51,7 @@
   </tr>
   <tr>
     <td width="50%" align="center"><img src="Media/Sensors.jpg" alt="彩色、深度与热成像摄像头" width="100%"/></td>
-    <td width="50%" align="center"><img src="Media/TopDownDrone.png" alt="ArduPilot 飞控与 GPS 定位" width="100%"/></td>
+    <td width="50%" align="center"><img src="Media/TopDownDrone.webp" alt="ArduPilot 飞控与 GPS 定位" width="100%"/></td>
   </tr>
 </table>
 
@@ -61,8 +61,8 @@
     <td width="50%" align="center"><b>移动端控制应用</b></td>
   </tr>
   <tr>
-    <td width="50%" align="center"><img src="Media/WheelProp.png" alt="车轮兼螺旋桨保护圈" width="100%"/></td>
-    <td width="50%" align="center"><img src="Media/MobileApp.png" alt="移动端控制应用" width="100%"/></td>
+    <td width="50%" align="center"><img src="Media/WheelProp.webp" alt="车轮兼螺旋桨保护圈" width="100%"/></td>
+    <td width="50%" align="center"><img src="Media/MobileApp.webp" alt="移动端控制应用" width="100%"/></td>
   </tr>
 </table>
 
@@ -110,7 +110,7 @@
 
 ## 原版 CAD 与打印文件
 
-![Mercury 原版 CAD 装配图](Media/CAD.png)
+![Mercury 原版 CAD 装配图](Media/CAD.webp)
 
 原版 STL 可在 [STL Files](STL%20Files) 目录下载。原作者说明：如需完整 CAD 项目及 SLDPRT、STEP 文件，可通过其 [Patreon](https://www.patreon.com/c/MercuriusTech) 获取；本仓库并不因此包含这些原版参数化文件。
 
