@@ -2,6 +2,8 @@
 
 对象：正点原子 **M144Z-M4 Mini Board（STM32F407ZGT6）**和 **JIS-GM144-1408A（铭牌 DC 14.4 V）**无刷减速电机。这里记录单电机台架的接线、控制时序和实测结果；**不依赖原项目的 ESP32-S3 固件或串口协议**，也不代表已完成带履带的整机验证。
 
+接入飞控的双路固件和配置见[PX4 UART4 → STM32 台架指南](Autonomy%20Software/STM32TrackMotor/README.md)。
+
 ## 接线
 
 | 电机端 | 连接 |

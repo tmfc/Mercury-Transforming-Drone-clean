@@ -25,6 +25,7 @@
 - [无碳板承力电子舱](#无碳板承力电子舱本地改型)
 - [软件安装与运行](#软件安装与运行)
 - [STM32 履带电机控制台架记录](STM32-Motor-Control.md)
+- [PX4 UART4 → STM32：CH6 / CH12 双路减速电机接线与配置](Autonomy%20Software/STM32TrackMotor/README.md)
 - [中文资料与本地化约定](#中文资料与本地化约定)
 - [许可证](#许可证)
 
